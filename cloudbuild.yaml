@@ -10,7 +10,6 @@ steps:
     export BUILD_ID=$BUILD_ID
     export TAG_NAME=$TAG_NAME
     export SHORT_SHA=$SHORT_SHA
-    ./docker-build.sh build-mecab-ipadic-neologd
     ./docker-build.sh mecab-ipadic-neologd
     
  
