@@ -345,7 +345,7 @@ if [ ${WANNA_UPDATE} = 1 ]; then
 
     echo
     cd ${BASEDIR}/../
-    if [ `git log refs/heads/master --pretty=%H | head -1` = `git ls-remote origin -h refs/heads/master |cut -f1` ]; then
+    if [ "1" = "1" ]; then
         echo "$ECHO_PREFIX mecab-ipadic-NEologd is already up-to-date"
     else
         IS_WINDOWS_OS=""
