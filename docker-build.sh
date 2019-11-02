@@ -8,6 +8,7 @@ docker build \
 -t $DOCKER_BASE:latest \
 -t $DOCKER_BASE:$BUILD_ID \
 -t $DOCKER_BASE:$SHORT_SHA \
+--mount src="/workspace",target=/workspace,type=bind k3_s3
 .
 
 docker push $DOCKER_BASE:latest
