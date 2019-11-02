@@ -7,7 +7,7 @@ RUN apt-get install -y mecab libmecab-dev mecab-ipadic-utf8 git make curl xz-uti
 
 # Build the neologism dictionary
 FROM baseline as mecab-ipadic-neologd
-WORKDIR /workspace
+ADD /workspace /workspace
 RUN echo yes | /workspace/bin/install-mecab-ipadic-neologd -n
 #RUN echo Done installing install-mecab-ipadic-neologd
 #RUN apt-get remove --purge -y libmecab-dev mecab-ipadic-utf8 git make curl xz-utils file
