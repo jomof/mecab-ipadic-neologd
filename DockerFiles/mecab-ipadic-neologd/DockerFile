@@ -6,10 +6,11 @@ RUN apt-get clean && apt-get update \
 
 # Build the neologism dictionary
 FROM baseline as mecab-ipadic-neologd
+WORKDIR /mecab-ipadic-neologd
 RUN apt-get install -y mecab libmecab-dev mecab-ipadic-utf8 git make curl xz-utils file
 RUN apt-get -y install sudo
 RUN echo yes | ./bin/install-mecab-ipadic-neologd -n
-RUN apt-get remove --purge -y libmecab-dev mecab-ipadic-utf8 git make curl xz-utils file
-RUN apt-get clean
-RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+#RUN apt-get remove --purge -y libmecab-dev mecab-ipadic-utf8 git make curl xz-utils file
+#RUN apt-get clean
+#RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN echo "8月3日に放送された「中居正広の金曜日のスマイルたちへ」(TBS系)で、1日たった5分でぽっこりおなかを解消するというダイエット方法を紹介。キンタロー。 のダイエットにも密着。" | mecab -d /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd/
