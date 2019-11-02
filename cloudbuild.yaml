@@ -5,6 +5,7 @@ steps:
   - '-c'
   - |
     chmod +x ./docker-build.sh
+    chmod +x ./bin/install-mecab-ipadic-neologd 
     export PROJECT_ID=$PROJECT_ID
     export BUILD_ID=$BUILD_ID
     export TAG_NAME=$TAG_NAME
