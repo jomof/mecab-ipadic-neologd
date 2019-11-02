@@ -17,5 +17,5 @@ RUN echo "8月3日に放送された「中居正広の金曜日のスマイル�
 
 # Create a tiny distro with just the build dictionary
 FROM alpine as mecab-ipadic-neologd
-WORKDIR mecab-ipadic-neologd
-ADD build-mecab-ipadic-neologd:/usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd .
+WORKDIR data
+ADD --from=build-mecab-ipadic-neologd /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd .
