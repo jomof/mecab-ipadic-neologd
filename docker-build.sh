@@ -5,11 +5,13 @@ docker pull $DOCKER_BASE
 docker build \
 --cache-from=$DOCKER_BASE:latest \
 -f ./DockerFiles/$TARGET/DockerFile \
+-t $DOCKER_BASE \
 -t $DOCKER_BASE:latest \
 -t $DOCKER_BASE:$BUILD_ID \
 -t $DOCKER_BASE:$SHORT_SHA \
 .
 
+docker push $DOCKER_BASE:latest
 docker push $DOCKER_BASE:latest
 docker push $DOCKER_BASE:$BUILD_ID
 docker push $DOCKER_BASE:$SHORT_SHA

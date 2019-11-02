@@ -11,5 +11,7 @@ steps:
     export TAG_NAME=$TAG_NAME
     export SHORT_SHA=$SHORT_SHA
     ./docker-build.sh mecab-ipadic-neologd
-
+    mkdir ./dic/mecab-ipadic-neologd
+    docker cp gcr.io/my-web-apis/mecab-ipadic-neologd:/usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd ./dic/mecab-ipadic-neologd
+    
  
