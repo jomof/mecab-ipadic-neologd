@@ -13,7 +13,6 @@ steps:
     apt-get install -y mecab libmecab-dev mecab-ipadic-utf8 git make curl xz-utils file sudo > nul
     echo yes | bin/install-mecab-ipadic-neologd -n -u
     echo "8月3日に放送された「中居正広の金曜日のスマイルたちへ」(TBS系)で、1日たった5分でぽっこりおなかを解消するというダイエット方法を紹介。キンタロー。 のダイエットにも密着。" | mecab -d /usr/lib/mecab/dic/mecab-ipadic-neologd/
-    ls /usr/lib/mecab/dic/mecab-ipadic-neologd
     gsutil cp /usr/lib/mecab/dic/mecab-ipadic-neologd/* gs://my-web-apis_cloudbuild/artifacts/mecab-ipadic-neologd/latest/
     gsutil cp /usr/lib/mecab/dic/mecab-ipadic-neologd/* gs://my-web-apis_cloudbuild/artifacts/mecab-ipadic-neologd/commit-$SHORT_SHA/
     gsutil cp /usr/lib/mecab/dic/mecab-ipadic-neologd/* gs://my-web-apis_cloudbuild/artifacts/mecab-ipadic-neologd/build-$BUILD_ID/
