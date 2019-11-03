@@ -6,10 +6,18 @@ steps:
   - |
     chmod +x ./docker-build.sh
     chmod +x ./bin/install-mecab-ipadic-neologd 
-    export PROJECT_ID=$PROJECT_ID
-    export BUILD_ID=$BUILD_ID
-    export TAG_NAME=$TAG_NAME
-    export SHORT_SHA=$SHORT_SHA
-    ./docker-build.sh mecab-ipadic-neologd
+    apt-get clean
+    apt-get update
+    apt-get install -y --no-install-recommends locales
+    locale-gen en_US.UTF-8 
+    apt-get install -y mecab libmecab-dev mecab-ipadic-utf8 git make curl xz-utils file sudo > nul
+    echo yes | bin/install-mecab-ipadic-neologd -n -u
+    echo "8月3日に放送された「中居正広の金曜日のスマイルたちへ」(TBS系)で、1日たった5分でぽっこりおなかを解消するというダイエット方法を紹介。キンタロー。 のダイエットにも密着。" | mecab -d /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd/
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['cp', '/usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd/*', 'gs://my-web-apis_cloudbuild/artifacts/mecab-ipadic-neologd/latest/']
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['cp', '/usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd/*', 'gs://my-web-apis_cloudbuild/artifacts/mecab-ipadic-neologd/commit-$SHORT_SHA/']
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['cp', '/usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd/*', 'gs://my-web-apis_cloudbuild/artifacts/mecab-ipadic-neologd/build-$BUILD_ID/']
     
  
